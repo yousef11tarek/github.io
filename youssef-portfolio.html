@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Youssef Tarek — مصمم جرافيك</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface2: #1a1a1a;
+      --border: rgba(255,255,255,0.07);
+      --accent: #c8f045;
+      --accent2: #ff6b35;
+      --text: #f0f0f0;
+      --muted: #888;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+    }
+
+    .portfolio {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 0 40px;
+      border-bottom: 0.5px solid var(--border);
+      margin-bottom: 64px;
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #0a0a0a;
+      border: none;
+      padding: 9px 20px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface2);
+      border: 0.5px solid var(--border);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .badge-dot {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+    .hero-title .line2 { color: var(--muted); font-weight: 400; }
+    .hero-title .accent { color: var(--accent); }
+
+    .hero-desc {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+      max-width: 380px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0a0a0a;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 0.5px solid var(--border);
+      padding: 12px 24px;
+      border-radius: 100px;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+
+    /* HERO VISUAL */
+    .avatar-frame {
+      width: 100%;
+      aspect-ratio: 1;
+      max-width: 360px;
+      margin: 0 auto;
+      border-radius: 24px;
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .stat-pill {
+      flex: 1;
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent);
+      display: block;
+    }
+    .stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* FILTER */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: 0.5px solid var(--border);
+      color: var(--muted);
+      padding: 7px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+    .filter-btn.active {
+      background: var(--accent);
+      color: #0a0a0a;
+      border-color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* GRID */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.25s, transform 0.25s;
+      position: relative;
+      text-decoration: none;
+      display: block;
+    }
+    .project-card:hover {
+      border-color: rgba(255,255,255,0.15);
+      transform: translateY(-3px);
+    }
+
+    .project-card.featured { grid-column: span 2; }
+
+    .card-thumb {
+      width: 100%;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card.featured .card-thumb { aspect-ratio: 16/7; }
+
+    .card-info { padding: 16px 18px 18px; }
+
+    .card-category {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .tag {
+      background: var(--surface2);
+      border: 0.5px solid var(--border);
+      color: var(--muted);
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    .card-arrow {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      width: 32px;
+      height: 32px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s;
+      font-size: 14px;
+      color: white;
+    }
+    .project-card:hover .card-arrow { opacity: 1; }
+
+    .thumb-brand { background: linear-gradient(135deg, #1a0a2e, #2d1254); }
+    .thumb-motion { background: linear-gradient(135deg, #0a1f0a, #0f3a0f); }
+    .thumb-ui { background: linear-gradient(135deg, #0d0d1f, #1a1a3e); }
+    .thumb-print { background: linear-gradient(135deg, #1f0a0a, #3a0f0f); }
+    .thumb-brand2 { background: linear-gradient(135deg, #0a1a1f, #0f303a); }
+    .thumb-identity { background: linear-gradient(135deg, #1a1a0a, #2e2e0d); }
+
+    /* ABOUT */
+    .about-strip {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: 24px;
+      padding: 40px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 64px;
+    }
+
+    .about-text h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 14px;
+    }
+    .about-text p { color: var(--muted); font-size: 14px; line-height: 1.75; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .skill-item {
+      background: var(--surface2);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    .skill-name { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+    .skill-bar { height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
+    .skill-fill { height: 100%; background: var(--accent); border-radius: 2px; }
+
+    /* CONTACT */
+    .contact-section {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: 24px;
+      padding: 60px 48px;
+      text-align: center;
+    }
+
+    .contact-section h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-bottom: 12px;
+    }
+    .contact-section h2 span { color: var(--accent); }
+    .contact-section p { color: var(--muted); font-size: 15px; margin-bottom: 32px; }
+
+    .contact-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s;
+    }
+    .btn-whatsapp:hover { opacity: 0.85; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 32px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* HIDDEN */
+    .project-card.hidden { display: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .projects-grid { grid-template-columns: 1fr 1fr; }
+      .project-card.featured { grid-column: span 2; }
+      .about-strip { grid-template-columns: 1fr; padding: 28px 24px; gap: 28px; }
+      .nav-links { display: none; }
+      .contact-section { padding: 40px 24px; }
+    }
+    @media (max-width: 480px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+<div class="portfolio" dir="rtl">
+
+  <nav>
+    <div class="logo">Y<span>.</span>Tarek</div>
+    <ul class="nav-links">
+      <li><a href="#work">الأعمال</a></li>
+      <li><a href="#about">عني</a></li>
+      <li><a href="#contact">تواصل</a></li>
+    </ul>
+    <a href="mailto:youseftarekj2@gmail.com" class="nav-cta">تواصل معي</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="badge"><span class="badge-dot"></span> متاح للعمل الحر</div>
+      <h1 class="hero-title">
+        أصمّم<br>
+        <span class="accent">هويات</span> تُحكى<br>
+        <span class="line2">قصتها.</span>
+      </h1>
+      <p class="hero-desc">مصمم جرافيك متخصص في الهوية البصرية، التوصيف الحركي، وتصميم واجهات المستخدم. أحوّل الأفكار إلى تجارب بصرية لا تُنسى.</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn-primary">استعرض أعمالي</a>
+        <a href="mailto:youseftarekj2@gmail.com" class="btn-ghost">راسلني</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="avatar-frame">
+        <svg width="100%" height="100%" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+          <rect width="360" height="360" fill="#111"/>
+          <circle cx="180" cy="140" r="90" fill="none" stroke="#c8f045" stroke-width="0.5" opacity="0.3"/>
+          <circle cx="180" cy="140" r="60" fill="none" stroke="#c8f045" stroke-width="0.5" opacity="0.2"/>
+          <ellipse cx="180" cy="120" rx="36" ry="36" fill="#1e1e1e" stroke="#c8f045" stroke-width="0.5"/>
+          <rect x="144" y="165" width="72" height="80" rx="8" fill="#1a1a1a" stroke="#c8f045" stroke-width="0.5" opacity="0.8"/>
+          <rect x="40" y="40" width="40" height="4" rx="2" fill="#c8f045" opacity="0.6"/>
+          <rect x="40" y="52" width="24" height="4" rx="2" fill="#ff6b35" opacity="0.5"/>
+          <text x="40" y="300" font-family="'Syne', sans-serif" font-size="13" fill="#c8f045" opacity="0.9" font-weight="700">Youssef Tarek</text>
+          <text x="40" y="316" font-family="'DM Sans', sans-serif" font-size="11" fill="#666">Graphic Designer · Cairo</text>
+          <g opacity="0.15">
+            <circle cx="300" cy="60" r="2" fill="#fff"/>
+            <circle cx="316" cy="60" r="2" fill="#fff"/>
+            <circle cx="300" cy="76" r="2" fill="#fff"/>
+            <circle cx="316" cy="76" r="2" fill="#fff"/>
+            <circle cx="300" cy="92" r="2" fill="#fff"/>
+            <circle cx="316" cy="92" r="2" fill="#fff"/>
+          </g>
+          <polygon points="300,290 330,260 330,290" fill="#ff6b35" opacity="0.7"/>
+        </svg>
+      </div>
+      <div class="stats-row">
+        <div class="stat-pill">
+          <span class="stat-num">+50</span>
+          <div class="stat-label">مشروع منجز</div>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-num">5</span>
+          <div class="stat-label">سنوات خبرة</div>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-num">30+</span>
+          <div class="stat-label">عميل راضٍ</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="section-header">
+      <h2 class="section-title">الأعمال المختارة</h2>
+      <div class="filters">
+        <button class="filter-btn active" onclick="filterCards(this,'all')">الكل</button>
+        <button class="filter-btn" onclick="filterCards(this,'brand')">هوية</button>
+        <button class="filter-btn" onclick="filterCards(this,'ui')">واجهات</button>
+        <button class="filter-btn" onclick="filterCards(this,'motion')">حركة</button>
+        <button class="filter-btn" onclick="filterCards(this,'print')">مطبوعات</button>
+      </div>
+    </div>
+
+    <div class="projects-grid">
+
+      <div class="project-card featured" data-cat="brand">
+        <div class="card-thumb thumb-brand">
+          <svg width="100%" height="100%" viewBox="0 0 600 230" xmlns="http://www.w3.org/2000/svg">
+            <text x="300" y="100" text-anchor="middle" font-family="'Syne',sans-serif" font-size="72" font-weight="800" fill="#c8f045" opacity="0.9">NOVA</text>
+            <text x="300" y="135" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#888" letter-spacing="6">BRAND IDENTITY</text>
+            <circle cx="80" cy="115" r="30" fill="none" stroke="#c8f045" stroke-width="1" opacity="0.4"/>
+            <circle cx="520" cy="115" r="20" fill="#ff6b35" opacity="0.3"/>
+          </svg>
+          <div class="card-arrow">↗</div>
+        </div>
+        <div class="card-info">
+          <div class="card-category">هوية بصرية</div>
+          <div class="card-title">NOVA — هوية شركة تقنية</div>
+          <div class="card-tags"><span class="tag">شعار</span><span class="tag">ألوان</span><span class="tag">مطبوعات</span></div>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="ui">
+        <div class="card-thumb thumb-ui">
+          <svg width="100%" height="100%" viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="30" width="220" height="150" rx="8" fill="#1a1a3e" stroke="#ffffff10" stroke-width="0.5"/>
+            <rect x="42" y="42" width="80" height="6" rx="3" fill="#c8f045" opacity="0.7"/>
+            <rect x="42" y="56" width="50" height="4" rx="2" fill="#ffffff20"/>
+            <rect x="42" y="80" width="196" height="60" rx="6" fill="#0d0d2f" stroke="#ffffff08"/>
+            <rect x="42" y="158" width="40" height="14" rx="7" fill="#c8f045" opacity="0.8"/>
+            <rect x="42" y="96" width="60" height="4" rx="2" fill="#ffffff15"/>
+            <rect x="42" y="108" width="100" height="4" rx="2" fill="#ffffff10"/>
+          </svg>
+          <div class="card-arrow">↗</div>
+        </div>
+        <div class="card-info">
+          <div class="card-category">تصميم واجهات</div>
+          <div class="card-title">لوحة تحكم — SaaS App</div>
+          <div class="card-tags"><span class="tag">UI/UX</span><span class="tag">Figma</span></div>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="motion">
+        <div class="card-thumb thumb-motion">
+          <svg width="100%" height="100%" viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg">
+            <text x="140" y="95" text-anchor="middle" font-family="'Syne',sans-serif" font-size="40" font-weight="800" fill="#c8f045" opacity="0.8">▶</text>
+            <circle cx="140" cy="105" r="50" fill="none" stroke="#c8f04540" stroke-width="1"/>
+            <circle cx="140" cy="105" r="35" fill="none" stroke="#c8f04520" stroke-width="0.5"/>
+            <text x="140" y="170" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#4d7a4d">Motion Reel 2024</text>
+          </svg>
+          <div class="card-arrow">↗</div>
+        </div>
+        <div class="card-info">
+          <div class="card-category">موشن جرافيك</div>
+          <div class="card-title">حزمة حركية — علامة تجارية</div>
+          <div class="card-tags"><span class="tag">After Effects</span></div>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="print">
+        <div class="card-thumb thumb-print">
+          <svg width="100%" height="100%" viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg">
+            <rect x="70" y="30" width="140" height="150" rx="4" fill="#2a0a0a" stroke="#ffffff10" stroke-width="0.5"/>
+            <rect x="82" y="45" width="116" height="6" rx="2" fill="#ff6b35" opacity="0.8"/>
+            <rect x="82" y="60" width="80" height="4" rx="2" fill="#ffffff20"/>
+            <rect x="82" y="76" width="116" height="80" rx="2" fill="#1f0808"/>
+            <rect x="82" y="168" width="50" height="4" rx="2" fill="#ffffff15"/>
+          </svg>
+          <div class="card-arrow">↗</div>
+        </div>
+        <div class="card-info">
+          <div class="card-category">مطبوعات</div>
+          <div class="card-title">كتالوج منتجات — فاخر</div>
+          <div class="card-tags"><span class="tag">Indesign</span><span class="tag">طباعة</span></div>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="brand">
+        <div class="card-thumb thumb-brand2">
+          <svg width="100%" height="100%" viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="140,40 200,150 80,150" fill="none" stroke="#c8f045" stroke-width="1" opacity="0.6"/>
+            <polygon points="140,70 180,140 100,140" fill="#c8f04515"/>
+            <text x="140" y="175" text-anchor="middle" font-family="'Syne',sans-serif" font-size="14" font-weight="700" fill="#c8f045" opacity="0.7">APEX</text>
+          </svg>
+          <div class="card-arrow">↗</div>
+        </div>
+        <div class="card-info">
+          <div class="card-category">هوية بصرية</div>
+          <div class="card-title">APEX — عيادات طبية</div>
+          <div class="card-tags"><span class="tag">شعار</span><span class="tag">VI</span></div>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="brand">
+        <div class="card-thumb thumb-identity">
+          <svg width="100%" height="100%" viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="140" cy="100" r="55" fill="none" stroke="#c8f045" stroke-width="0.5" opacity="0.4"/>
+            <text x="140" y="90" text-anchor="middle" font-family="'Syne',sans-serif" font-size="20" font-weight="800" fill="#c8f045" opacity="0.9">ذهب</text>
+            <text x="140" y="112" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#888" letter-spacing="3">DAHAB RESTO</text>
+          </svg>
+          <div class="card-arrow">↗</div>
+        </div>
+        <div class="card-info">
+          <div class="card-category">هوية بصرية</div>
+          <div class="card-title">ذهب — مطعم فاخر</div>
+          <div class="card-tags"><span class="tag">برندنج</span><span class="tag">قائمة طعام</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-strip">
+    <div class="about-text">
+      <h2>من أنا؟</h2>
+      <p>أنا Youssef Tarek Hassanin، مصمم جرافيك شغوف بتحويل الأفكار المعقدة إلى رسائل بصرية واضحة وجذابة. أعمل مع العلامات التجارية الناشئة والراسخة لبناء هويات بصرية قوية ومتماسكة.</p>
+      <br>
+      <p>Adobe CC · Figma · After Effects · Illustrator</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-item">
+        <div class="skill-name">هوية بصرية</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">تصميم UI</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">موشن جرافيك</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">مطبوعات</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section" style="margin-top: 0;">
+    <h2>هل لديك <span>مشروع</span>؟</h2>
+    <p>أنا مستعد للتعاون على مشروعك القادم — تواصل معي الآن</p>
+    <div class="contact-buttons">
+      <a href="https://wa.me/201157030562" target="_blank" class="btn-whatsapp">
+        واتساب
+      </a>
+      <a href="mailto:youseftarekj2@gmail.com" class="btn-primary">
+        youseftarekj2@gmail.com
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p style="margin-top: 40px;">© 2025 Youssef Tarek Hassanin — All rights reserved</p>
+  </footer>
+
+</div>
+
+<script>
+  function filterCards(btn, cat) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.project-card[data-cat]').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
+</body>
+</html>
